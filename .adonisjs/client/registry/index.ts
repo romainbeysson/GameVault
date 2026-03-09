@@ -42,6 +42,30 @@ const routes = {
     tokens: [{"old":"/logout","type":0,"val":"logout","end":""}],
     types: placeholder as Registry['session.destroy']['types'],
   },
+  'admin.games.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/admin/games',
+    tokens: [{"old":"/admin/games","type":0,"val":"admin","end":""},{"old":"/admin/games","type":0,"val":"games","end":""}],
+    types: placeholder as Registry['admin.games.index']['types'],
+  },
+  'admin.games.create': {
+    methods: ["GET","HEAD"],
+    pattern: '/admin/games/create',
+    tokens: [{"old":"/admin/games/create","type":0,"val":"admin","end":""},{"old":"/admin/games/create","type":0,"val":"games","end":""},{"old":"/admin/games/create","type":0,"val":"create","end":""}],
+    types: placeholder as Registry['admin.games.create']['types'],
+  },
+  'admin.games.store': {
+    methods: ["POST"],
+    pattern: '/admin/games',
+    tokens: [{"old":"/admin/games","type":0,"val":"admin","end":""},{"old":"/admin/games","type":0,"val":"games","end":""}],
+    types: placeholder as Registry['admin.games.store']['types'],
+  },
+  'admin.games.destroy': {
+    methods: ["DELETE"],
+    pattern: '/admin/games/:id',
+    tokens: [{"old":"/admin/games/:id","type":0,"val":"admin","end":""},{"old":"/admin/games/:id","type":0,"val":"games","end":""},{"old":"/admin/games/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['admin.games.destroy']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }

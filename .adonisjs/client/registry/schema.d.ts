@@ -15,7 +15,7 @@ export interface Registry {
       paramsTuple: []
       params: {}
       query: {}
-      response: unknown
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/games_controller').default['index']>>>
     }
   }
   'new_account.create': {
@@ -71,6 +71,50 @@ export interface Registry {
       params: {}
       query: {}
       response: ExtractResponse<Awaited<ReturnType<import('#controllers/session_controller').default['destroy']>>>
+    }
+  }
+  'admin.games.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/admin/games'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/games_controller').default['adminIndex']>>>
+    }
+  }
+  'admin.games.create': {
+    methods: ["GET","HEAD"]
+    pattern: '/admin/games/create'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/games_controller').default['create']>>>
+    }
+  }
+  'admin.games.store': {
+    methods: ["POST"]
+    pattern: '/admin/games'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/games_controller').default['store']>>>
+    }
+  }
+  'admin.games.destroy': {
+    methods: ["DELETE"]
+    pattern: '/admin/games/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/games_controller').default['destroy']>>>
     }
   }
 }

@@ -37,6 +37,7 @@ export default function Layout({ children }: { children: ReactElement<Data.Share
             <nav>
               {children.props.user ? (
                 <>
+                  <a href="/admin/games" className="admin-link">🎮 Admin</a>
                   <span>{children.props.user.initials}</span>
                   <Form route="session.destroy">
                     <button type="submit"> Logout </button>

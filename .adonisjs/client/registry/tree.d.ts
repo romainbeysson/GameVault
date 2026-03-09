@@ -12,4 +12,12 @@ export interface ApiDefinition {
     store: typeof routes['session.store']
     destroy: typeof routes['session.destroy']
   }
+  admin: {
+    games: {
+      index: typeof routes['admin.games.index']
+      create: typeof routes['admin.games.create']
+      store: typeof routes['admin.games.store']
+      destroy: typeof routes['admin.games.destroy']
+    }
+  }
 }

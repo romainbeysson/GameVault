@@ -1,6 +1,5 @@
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
 import User from '#models/user'
-import hash from '@adonisjs/core/services/hash'
 
 export default class extends BaseSeeder {
   async run() {
@@ -11,9 +10,10 @@ export default class extends BaseSeeder {
     try {
       // Supprime tout admin existant (sécurité)
       await User.query().where('email', email).delete()
+      // Le modèle User avec withAuthFinder hash automatiquement le password
       const user = await User.create({
         email,
-        password: await hash.make(password),
+        password,
         fullName,
       })
       console.log('Admin créé:', user.email)
